@@ -10,7 +10,7 @@
 		720B936A2C9B074F00B4F98D /* EnterNewPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720B93692C9B074F00B4F98D /* EnterNewPasswordView.swift */; };
 		720B936C2C9B094B00B4F98D /* GoToHomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720B936B2C9B094B00B4F98D /* GoToHomePageView.swift */; };
 		720B936E2C9B0A4C00B4F98D /* SignUpOrSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720B936D2C9B0A4C00B4F98D /* SignUpOrSignInView.swift */; };
-		72B005A32C9AA3710007C40C /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B005A22C9AA3710007C40C /* Login.swift */; };
+		72B005A32C9AA3710007C40C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B005A22C9AA3710007C40C /* LoginView.swift */; };
 		72B005C32C9AE4AD0007C40C /* ForgetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B005C22C9AE4AD0007C40C /* ForgetPasswordView.swift */; };
 		72B005C52C9AEAA20007C40C /* VerificationCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B005C42C9AEAA20007C40C /* VerificationCodeView.swift */; };
 		E17EB2622C9A98850071A031 /* EcommerceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17EB2612C9A98850071A031 /* EcommerceApp.swift */; };
@@ -21,6 +21,9 @@
 		E17EB27D2C9A98880071A031 /* EcommerceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17EB27C2C9A98880071A031 /* EcommerceUITests.swift */; };
 		E17EB27F2C9A98880071A031 /* EcommerceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17EB27E2C9A98880071A031 /* EcommerceUITestsLaunchTests.swift */; };
 		E17EB28C2C9A9A6D0071A031 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17EB28B2C9A9A6D0071A031 /* RegistrationView.swift */; };
+		E1C49BBE2C9BF28700125C93 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C49BBD2C9BF28700125C93 /* Style.swift */; };
+		E1C49BBF2C9BF28700125C93 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C49BBD2C9BF28700125C93 /* Style.swift */; };
+		E1C49BC02C9BF28700125C93 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C49BBD2C9BF28700125C93 /* Style.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +47,7 @@
 		720B93692C9B074F00B4F98D /* EnterNewPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNewPasswordView.swift; sourceTree = "<group>"; };
 		720B936B2C9B094B00B4F98D /* GoToHomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToHomePageView.swift; sourceTree = "<group>"; };
 		720B936D2C9B0A4C00B4F98D /* SignUpOrSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpOrSignInView.swift; sourceTree = "<group>"; };
-		72B005A22C9AA3710007C40C /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		72B005A22C9AA3710007C40C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		72B005C22C9AE4AD0007C40C /* ForgetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordView.swift; sourceTree = "<group>"; };
 		72B005C42C9AEAA20007C40C /* VerificationCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeView.swift; sourceTree = "<group>"; };
 		E17EB25E2C9A98850071A031 /* Ecommerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ecommerce.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +61,7 @@
 		E17EB27C2C9A98880071A031 /* EcommerceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcommerceUITests.swift; sourceTree = "<group>"; };
 		E17EB27E2C9A98880071A031 /* EcommerceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcommerceUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E17EB28B2C9A9A6D0071A031 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		E1C49BBD2C9BF28700125C93 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,7 @@
 		720B93702C9BE53100B4F98D /* MainHomePages */ = {
 			isa = PBXGroup;
 			children = (
+				E1C49BC12C9BF3FE00125C93 /* Helper */,
 			);
 			path = MainHomePages;
 			sourceTree = "<group>";
@@ -120,7 +125,7 @@
 				720B936D2C9B0A4C00B4F98D /* SignUpOrSignInView.swift */,
 				720B93692C9B074F00B4F98D /* EnterNewPasswordView.swift */,
 				720B936B2C9B094B00B4F98D /* GoToHomePageView.swift */,
-				72B005A22C9AA3710007C40C /* Login.swift */,
+				72B005A22C9AA3710007C40C /* LoginView.swift */,
 				72B005C42C9AEAA20007C40C /* VerificationCodeView.swift */,
 				E17EB28B2C9A9A6D0071A031 /* RegistrationView.swift */,
 				72B005C22C9AE4AD0007C40C /* ForgetPasswordView.swift */,
@@ -154,6 +159,14 @@
 				E17EB27E2C9A98880071A031 /* EcommerceUITestsLaunchTests.swift */,
 			);
 			path = EcommerceUITests;
+			sourceTree = "<group>";
+		};
+		E1C49BC12C9BF3FE00125C93 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				E1C49BBD2C9BF28700125C93 /* Style.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,7 +307,8 @@
 				720B936E2C9B0A4C00B4F98D /* SignUpOrSignInView.swift in Sources */,
 				720B936A2C9B074F00B4F98D /* EnterNewPasswordView.swift in Sources */,
 				E17EB2622C9A98850071A031 /* EcommerceApp.swift in Sources */,
-				72B005A32C9AA3710007C40C /* Login.swift in Sources */,
+				72B005A32C9AA3710007C40C /* LoginView.swift in Sources */,
+				E1C49BBE2C9BF28700125C93 /* Style.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E17EB2732C9A98880071A031 /* EcommerceTests.swift in Sources */,
+				E1C49BBF2C9BF28700125C93 /* Style.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E17EB27D2C9A98880071A031 /* EcommerceUITests.swift in Sources */,
+				E1C49BC02C9BF28700125C93 /* Style.swift in Sources */,
 				E17EB27F2C9A98880071A031 /* EcommerceUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

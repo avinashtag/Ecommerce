@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var password: String
+  
     var body: some View {
         NavigationView(content: {
             VStack(spacing: 20, content: {
@@ -17,7 +19,9 @@ struct ContentView: View {
                     .font(.title2)
                     .bold()
                 NavigationLink {
-                    RegistrationView(fullName: "", email: "", phoneNumber: "", password: "", confirmPassword: "")
+                    EnterNewPasswordView(password: $password, confirmPassword: "")
+
+//                    RegistrationView(fullName: "", email: "", phoneNumber: "", password: "", confirmPassword: "")
                 } label: {
                     Text("Get Started")
                         .bold()
@@ -32,5 +36,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(password: "")
 }

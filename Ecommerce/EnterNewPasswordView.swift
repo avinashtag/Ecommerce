@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EnterNewPasswordView: View {
-    @State var password:String
+    @Binding var password:String
     @State var confirmPassword:String
     
     var body: some View {
@@ -51,6 +51,7 @@ struct EnterNewPasswordView: View {
     }
 }
 
-#Preview {
-    EnterNewPasswordView(password: "", confirmPassword: "")
-}
+//#Preview {
+////    @State var password: String
+////    EnterNewPasswordView(password: "", confirmPassword: "")
+//}

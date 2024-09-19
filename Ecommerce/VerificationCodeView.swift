@@ -28,6 +28,7 @@ struct VerificationCodeView: View {
                 .frame(width: 150,height: 40)
                 .border(Color.gray)
                 .cornerRadius(20)
+                .keyboardType(.numberPad)
             
             Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                 Text("Verification Code")
