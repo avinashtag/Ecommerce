@@ -14,10 +14,13 @@ struct ContentView: View {
                 Image(systemName: "Registration")
                     .frame(width: 100, height: 100)
                 Text("Your Favourite place of shopping!")
+                    .font(.title2)
+                    .bold()
                 NavigationLink {
                     RegistrationView(fullName: "", email: "", phoneNumber: "", password: "", confirmPassword: "")
                 } label: {
                     Text("Get Started")
+                        .bold()
                 }
 
 

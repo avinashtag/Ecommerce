@@ -12,7 +12,7 @@ import SwiftUI
 struct RegistrationView: View {
     
     @State var fullName: String
-    @Binding var email: String
+    @State var email: String
     @State var phoneNumber: String
     @State var password: String
     @State var confirmPassword: String
@@ -21,6 +21,7 @@ struct RegistrationView: View {
         VStack(alignment: .leading, spacing: 20, content: {
             Text("Thank you for Choosing us!")
                 .font(.title)
+                .bold()
             Text("Lets help you finish sign up.")
             
             Spacer(minLength: 40)
@@ -29,9 +30,20 @@ struct RegistrationView: View {
                 .font(.body)
                 .keyboardType(.default)
                 .autocorrectionDisabled()
+//                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
                 .overlay {
                     //rounded + border
                 //padding
+//                    Capsule()
+//                        .frame(width: 100,height: 30,alignment: .leading)
+//                        .opacity(0.2)
+//                    Text("Enter Your Full Name")
+//                        .frame(alignment: .leading)
+//                        .opacity(0.2)
+//                        .foregroundColor(.black)
+                    
+                        
+                        
                 }
 
             
@@ -69,9 +81,16 @@ struct RegistrationView: View {
             }, label: {
                 Text("Sign Up")
                     .font(.title)
+                    .frame(width: 250,height: 50)
+                    .foregroundColor(.white)
+                    .background(Color.blue)
+                    .cornerRadius(30)
             })
 
         })
         .padding()
     }
+}
+#Preview {
+    RegistrationView(fullName: "", email: "", phoneNumber: "", password: "", confirmPassword: "")
 }

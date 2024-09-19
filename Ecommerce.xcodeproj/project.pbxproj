@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		720B936A2C9B074F00B4F98D /* EnterNewPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720B93692C9B074F00B4F98D /* EnterNewPasswordView.swift */; };
+		720B936C2C9B094B00B4F98D /* GoToHomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720B936B2C9B094B00B4F98D /* GoToHomePageView.swift */; };
+		720B936E2C9B0A4C00B4F98D /* SignUpOrSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720B936D2C9B0A4C00B4F98D /* SignUpOrSignInView.swift */; };
+		72B005A32C9AA3710007C40C /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B005A22C9AA3710007C40C /* Login.swift */; };
+		72B005C32C9AE4AD0007C40C /* ForgetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B005C22C9AE4AD0007C40C /* ForgetPasswordView.swift */; };
+		72B005C52C9AEAA20007C40C /* VerificationCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B005C42C9AEAA20007C40C /* VerificationCodeView.swift */; };
 		E17EB2622C9A98850071A031 /* EcommerceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17EB2612C9A98850071A031 /* EcommerceApp.swift */; };
 		E17EB2642C9A98850071A031 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17EB2632C9A98850071A031 /* ContentView.swift */; };
 		E17EB2662C9A98870071A031 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E17EB2652C9A98870071A031 /* Assets.xcassets */; };
@@ -15,8 +21,6 @@
 		E17EB27D2C9A98880071A031 /* EcommerceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17EB27C2C9A98880071A031 /* EcommerceUITests.swift */; };
 		E17EB27F2C9A98880071A031 /* EcommerceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17EB27E2C9A98880071A031 /* EcommerceUITestsLaunchTests.swift */; };
 		E17EB28C2C9A9A6D0071A031 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17EB28B2C9A9A6D0071A031 /* RegistrationView.swift */; };
-		E17EB28D2C9A9A6D0071A031 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17EB28B2C9A9A6D0071A031 /* RegistrationView.swift */; };
-		E17EB28E2C9A9A6D0071A031 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17EB28B2C9A9A6D0071A031 /* RegistrationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		720B93692C9B074F00B4F98D /* EnterNewPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNewPasswordView.swift; sourceTree = "<group>"; };
+		720B936B2C9B094B00B4F98D /* GoToHomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToHomePageView.swift; sourceTree = "<group>"; };
+		720B936D2C9B0A4C00B4F98D /* SignUpOrSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpOrSignInView.swift; sourceTree = "<group>"; };
+		72B005A22C9AA3710007C40C /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		72B005C22C9AE4AD0007C40C /* ForgetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordView.swift; sourceTree = "<group>"; };
+		72B005C42C9AEAA20007C40C /* VerificationCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeView.swift; sourceTree = "<group>"; };
 		E17EB25E2C9A98850071A031 /* Ecommerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ecommerce.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E17EB2612C9A98850071A031 /* EcommerceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcommerceApp.swift; sourceTree = "<group>"; };
 		E17EB2632C9A98850071A031 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,6 +85,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		720B93702C9BE53100B4F98D /* MainHomePages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MainHomePages;
+			sourceTree = "<group>";
+		};
 		E17EB2552C9A98850071A031 = {
 			isa = PBXGroup;
 			children = (
@@ -98,9 +115,16 @@
 		E17EB2602C9A98850071A031 /* Ecommerce */ = {
 			isa = PBXGroup;
 			children = (
+				720B93702C9BE53100B4F98D /* MainHomePages */,
 				E17EB2612C9A98850071A031 /* EcommerceApp.swift */,
-				E17EB2632C9A98850071A031 /* ContentView.swift */,
+				720B936D2C9B0A4C00B4F98D /* SignUpOrSignInView.swift */,
+				720B93692C9B074F00B4F98D /* EnterNewPasswordView.swift */,
+				720B936B2C9B094B00B4F98D /* GoToHomePageView.swift */,
+				72B005A22C9AA3710007C40C /* Login.swift */,
+				72B005C42C9AEAA20007C40C /* VerificationCodeView.swift */,
 				E17EB28B2C9A9A6D0071A031 /* RegistrationView.swift */,
+				72B005C22C9AE4AD0007C40C /* ForgetPasswordView.swift */,
+				E17EB2632C9A98850071A031 /* ContentView.swift */,
 				E17EB2652C9A98870071A031 /* Assets.xcassets */,
 				E17EB2672C9A98870071A031 /* Preview Content */,
 			);
@@ -262,9 +286,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72B005C52C9AEAA20007C40C /* VerificationCodeView.swift in Sources */,
+				72B005C32C9AE4AD0007C40C /* ForgetPasswordView.swift in Sources */,
 				E17EB28C2C9A9A6D0071A031 /* RegistrationView.swift in Sources */,
+				720B936C2C9B094B00B4F98D /* GoToHomePageView.swift in Sources */,
 				E17EB2642C9A98850071A031 /* ContentView.swift in Sources */,
+				720B936E2C9B0A4C00B4F98D /* SignUpOrSignInView.swift in Sources */,
+				720B936A2C9B074F00B4F98D /* EnterNewPasswordView.swift in Sources */,
 				E17EB2622C9A98850071A031 /* EcommerceApp.swift in Sources */,
+				72B005A32C9AA3710007C40C /* Login.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +303,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E17EB2732C9A98880071A031 /* EcommerceTests.swift in Sources */,
-				E17EB28D2C9A9A6D0071A031 /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +310,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E17EB28E2C9A9A6D0071A031 /* RegistrationView.swift in Sources */,
 				E17EB27D2C9A98880071A031 /* EcommerceUITests.swift in Sources */,
 				E17EB27F2C9A98880071A031 /* EcommerceUITestsLaunchTests.swift in Sources */,
 			);
