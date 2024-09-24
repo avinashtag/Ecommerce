@@ -25,53 +25,13 @@ struct RegistrationView: View {
             Text("Lets help you finish sign up.")
             
             Spacer(minLength: 40)
-            Text("Full Name")
-            TextField("", text: $fullName)
-                .font(.body)
-                .keyboardType(.default)
-                .autocorrectionDisabled()
-//                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-                .overlay {
-                    //rounded + border
-                //padding
-//                    Capsule()
-//                        .frame(width: 100,height: 30,alignment: .leading)
-//                        .opacity(0.2)
-//                    Text("Enter Your Full Name")
-//                        .frame(alignment: .leading)
-//                        .opacity(0.2)
-//                        .foregroundColor(.black)
-                    
-                        
-                        
-                }
-
             
-            Text("Email")
-            TextField("", text: $fullName)
-                .font(.body)
-                .keyboardType(.emailAddress)
-                .autocorrectionDisabled()
-
-
-            Text("Phone Number")
-            TextField("", text: $fullName)
-                .font(.body)
-                .keyboardType(.phonePad)
-                .autocorrectionDisabled()
-
-
-            Text("Password")
-            TextField("", text: $fullName)
-                .font(.body)
-                .keyboardType(.default)
-                .autocorrectionDisabled()
-
-            Text("Confirm Password")
-            TextField("", text: $fullName)
-                .font(.body)
-                .keyboardType(.default)
-                .autocorrectionDisabled()
+            RegistrationCell(textField: $fullName, title: "Full Names")
+            RegistrationCell(textField: $fullName, title: "Email")
+            RegistrationCell(textField: $fullName, title: "Phone Number")
+                .keyboardType(.numberPad)
+            RegistrationSecureCell(textField: $fullName, title: "Password")
+            RegistrationSecureCell(textField: $fullName, title: "Confirm Password")
 
             Spacer(minLength: 40)
 
@@ -94,3 +54,43 @@ struct RegistrationView: View {
 #Preview {
     RegistrationView(fullName: "", email: "", phoneNumber: "", password: "", confirmPassword: "")
 }
+
+
+struct RegistrationCell: View {
+    
+    @Binding var textField: String
+    @State var title: String
+
+    var body: some View {
+        Text(title)
+        TextField("", text: $textField)
+            .font(.body)
+            .padding(5)
+            .keyboardType(.default)
+            .autocorrectionDisabled()
+            .overlay {
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(lineWidth: 1)
+            }
+    }
+}
+
+struct RegistrationSecureCell: View {
+    
+    @Binding var textField: String
+    @State var title: String
+
+    var body: some View {
+        Text(title)
+        SecureField("", text: $textField)
+            .font(.body)
+            .padding(5)
+            .keyboardType(.default)
+            .autocorrectionDisabled()
+            .overlay {
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(lineWidth: 1)
+            }
+    }
+}
+
