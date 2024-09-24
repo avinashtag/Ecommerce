@@ -12,7 +12,9 @@ struct ProductBannerView: View {
         Image("FashonSale")
             .resizable()
             .scaledToFit()
-            .frame(width: 500,height: 200)
+            .frame(width: 200,height: 200)
+        //Frame suppose to be by uiscreen bound relative
+        //Height make it 16:9 ratio
     }
 }
 
