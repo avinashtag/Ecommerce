@@ -32,7 +32,9 @@ struct LoginView: View {
             }
             
             Text("Email")
-            TextField("", text: $email)
+                .padding()
+            TextField("Enter Your Email", text: $email)
+                .padding()
                 .frame(width: UIScreen.main.bounds.width-30,height: 30)
                 .padding(5)
                 .overlay {
@@ -41,7 +43,9 @@ struct LoginView: View {
                 }
             
             Text("Password")
-            SecureField("", text: $password)
+                .padding()
+            SecureField("Enter Your Password", text: $password)
+                .padding()
                 .frame(width: UIScreen.main.bounds.width-30,height: 30)
                 .padding(5)
                 .overlay {
