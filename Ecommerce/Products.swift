@@ -19,8 +19,16 @@ public enum Products{
     }
     
     
-    struct Product: Codable {
-        let id: Int
+    struct Product: Codable, Hashable {
+        static func == (lhs: Products.Product, rhs: Products.Product) -> Bool {
+            lhs.id == rhs.id
+        }
+        
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(id)
+        }
+
+        let id: UUID
         let title: String
         let price: Double
         let description: String

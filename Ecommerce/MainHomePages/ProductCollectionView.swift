@@ -1,51 +1,37 @@
 //
-//  CartagorryView.swift
+//  ProductCollectionView.swift
 //  Ecommerce
 //
-//  Created by Pasham Srinivas Goud on 21/09/24.
+//  Created by Avinash on 24/09/2024.
 //
 
 import SwiftUI
 
-struct CategorieView: View {
-    var imagesSet =
-    [
-        "Electronics",
-        "Fashon",
-        "Grosiris",
-        "HomeApplincies",
-        "KidsNeed"
-    ]
-    var names=[
-        "Electronics",
-        "Fashon",
-        "Grosiris",
-        "HomeApplincies",
-        "KidsNeed"
-    ]
+
+
+struct ProductCollectionView: View {
+    
+    @Binding var title: String
+    @Binding var products: [Products.Product]
+
     
     var body: some View {
         VStack{
-            Image("FashonSale")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 500,height: 200)
-            Divider()
-            Text("Categories")
+            Text(title)
                 .font(.title2)
                 .bold()
             ScrollView(.horizontal) {
                 HStack {
                     
                     // Zip the images and names to create pairs of (image, name)
-                    ForEach(Array(zip(imagesSet, names)), id: \.0) { image, name in
+                    ForEach(products, id: \.self){ product in
                         VStack {
-                            Image(image)
+                            Image(product.image)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 100, height: 100)
                             
-                            Text(name)
+                            Text(product.title)
                                 .font(.subheadline)
                                 .bold()
                             
@@ -62,6 +48,6 @@ struct CategorieView: View {
     }
 }
 
-#Preview {
-    CategorieView()
-}
+//#Preview {
+//    ProductCollectionView(title: <#Binding<String>#>, products: <#Binding<[Products.Product]>#>)
+//}

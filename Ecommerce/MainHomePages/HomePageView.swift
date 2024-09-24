@@ -9,6 +9,13 @@ import SwiftUI
 
 struct HomePageView: View {
     
+    
+    @State var forYouProducts: [Products.Product] = [Products.Product(id: UUID(), title: "Electronics", price: 0, description: "", category: .electronics, image: "Electronics", rating: .init(rate: 2, count: 5))]
+    @State var forcategory: [Products.Product] = [Products.Product(id: UUID(), title: "FossilWatch", price: 0, description: "", category: .electronics, image: "FossilWatch", rating: .init(rate: 2, count: 5))]
+
+    @State var forYouProductTitle: String = "For you"
+    @State var forCategory: String = "Category"
+    
     var body: some View {
 //        SearchView(search: "")
         ZStack
@@ -18,18 +25,26 @@ struct HomePageView: View {
             
             ScrollView
             {
-                VStack()
-                {
+                VStack(alignment: .leading, content: {
                     SearchView(search: "")
                     Divider()
-                    Text("For You")
-                        .font(.title2)
-                        .bold()
-                    CategorieView()
+                    HStack{
+                        Spacer()
+                        Text("For You")
+                            .font(.title2)
+                            .bold()
+                        Spacer()
+                    }
+                    ProductBannerView()
+                    Divider()
+                  
+                    ProductCollectionView(title: $forYouProductTitle, products: $forYouProducts)
+                   
                     Divider()
                     Spacer()
-                    YouMayLikeView()
-                }
+                   
+                    ProductCollectionView(title: $forCategory, products: $forcategory)
+                })
                 .padding()
             }
 //            Spacer()
