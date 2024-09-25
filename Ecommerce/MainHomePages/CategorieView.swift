@@ -41,8 +41,7 @@ struct CategorieView: View {
     ]
     
     var body: some View {
-        VStack
-        {
+        VStack{
             Image("FashonSale")
                 .resizable()
                 .scaledToFit()
@@ -70,8 +69,8 @@ struct CategorieView: View {
                             .bold()
                         
                     }
-                    .padding()
                 }
+                
             }
             
         }.background(.pink)
