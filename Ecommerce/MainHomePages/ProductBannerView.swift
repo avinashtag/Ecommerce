@@ -17,7 +17,18 @@ struct ProductBannerView: View {
         //Height make it 16:9 ratio
     }
 }
-
+/*
+ 
+ Make it center image
+ try pass first product and show image
+ 
+ Create Product Detail page
+ 
+ Optional
+ - connect
+ - show detail
+ 
+ */
 #Preview {
     ProductBannerView()
 }

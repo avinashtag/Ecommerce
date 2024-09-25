@@ -42,6 +42,7 @@ struct ProductCollectionView: View {
                             Text(product.title)
                                 .font(.subheadline)
                                 .bold()
+                                .frame(width: 100)
                             
                         }
                         .padding()
@@ -55,6 +56,15 @@ struct ProductCollectionView: View {
         
     }
 }
+
+
+/*
+ 
+ Aligment top
+ Title = 2 lines
+ 
+ 
+ */
 
 //#Preview {
 //    ProductCollectionView(title: <#Binding<String>#>, products: <#Binding<[Products.Product]>#>)
