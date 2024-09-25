@@ -13,7 +13,6 @@ struct SignUpOrSignInView: View {
         {
             Text("Your Favorite for Shoping")
                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                .foregroundColor(.title)
                 .bold()
             Text("Lorem Ipsum is simple dummy text of the \n typsetting industry. Lorem Ipsum has\n been industrie's standard dummy\n text even since the 1505's")
                 .font(.headline)
