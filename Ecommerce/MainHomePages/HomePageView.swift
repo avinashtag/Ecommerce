@@ -10,11 +10,11 @@ import SwiftUI
 struct HomePageView: View {
     
     
-    @State var forYouProducts: [Products.Product] = [Products.Product(id: UUID(), title: "Electronics", price: 0, description: "", category: .electronics, image: "Electronics", rating: .init(rate: 2, count: 5))]
-    @State var forcategory: [Products.Product] = [Products.Product(id: UUID(), title: "FossilWatch", price: 0, description: "", category: .electronics, image: "FossilWatch", rating: .init(rate: 2, count: 5))]
 
     @State var forYouProductTitle: String = "For you"
     @State var forCategory: String = "Category"
+    
+    @State private var products : [Products.Product] = []
     
     var body: some View {
 //        SearchView(search: "")
@@ -26,11 +26,11 @@ struct HomePageView: View {
             ScrollView
             {
                 VStack(alignment: .leading, content: {
-                    SearchView(search: "")
+                    SearchView(search: "".appendMyName())
                     Divider()
                     HStack{
                         Spacer()
-                        Text("For You")
+                        Text("For You".appendMyName())
                             .font(.title2)
                             .bold()
                         Spacer()
@@ -38,21 +38,23 @@ struct HomePageView: View {
                     ProductBannerView()
                     Divider()
                   
-                    ProductCollectionView(title: $forYouProductTitle, products: $forYouProducts)
+                    ProductCollectionView(title: $forYouProductTitle, products: $products)
                    
                     Divider()
                     Spacer()
-                }
+                })
                 
             }
-//            Text("Footer")
-//                .font(.title3)
-//                .bold()
-//                .foregroundColor(.black)
-//                .frame(maxWidth: .infinity, alignment: .center)
-//                .padding()
-//                .background(Color.white)
             
+        }
+        .task {
+            
+            do{
+                products = try await Products.Request().load()
+            }
+            catch{
+                print(error)
+            }
         }
         
         

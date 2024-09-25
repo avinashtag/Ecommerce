@@ -37,11 +37,12 @@ struct EnterNewPasswordView: View {
         
         VStack
         {
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+            NavigationLink(destination: {HomePageView()}) {
                 Text("Done")
                     .font(.title3)
                     .bold()
-            })
+
+            }
             .frame(width: 200,height: 50)
             .foregroundColor(.white)
             .background(Color.blue)

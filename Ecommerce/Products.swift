@@ -10,13 +10,16 @@ import Foundation
 
 public enum Products{
     
-//    struct Request : Codable{
-//         
-//        public func load() async throws -> [Product]{
+    struct Request : Codable{
+         
+        public func load() async throws -> [Product]{
+            
+            
+            return try Bundle.main.decoder("Products.json", of: [Product].self)
 //            let response: [Product] = try await Network.shared.fetch(for: .products)
 //            return response
-//        }
-//    }
+        }
+    }
     
     
     struct Product: Codable, Hashable {
@@ -28,7 +31,7 @@ public enum Products{
             hasher.combine(id)
         }
 
-        let id: UUID
+        let id: Int
         let title: String
         let price: Double
         let description: String
