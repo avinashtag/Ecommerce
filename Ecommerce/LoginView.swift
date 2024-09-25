@@ -36,22 +36,22 @@ struct LoginView: View {
             TextField("Enter Your Email", text: $email)
                 .padding()
                 .frame(width: UIScreen.main.bounds.width-30,height: 30)
-                .padding(5)
+//                .padding(5)
                 .overlay {
                     RoundedRectangle(cornerRadius: 5)
                         .stroke(.gray, lineWidth: 1)
-                }
+                }.padding(5)
             
             Text("Password")
                 .padding()
             SecureField("Enter Your Password", text: $password)
                 .padding()
                 .frame(width: UIScreen.main.bounds.width-30,height: 30)
-                .padding(5)
+//                .padding(5)
                 .overlay {
                     RoundedRectangle(cornerRadius: 5)
                         .stroke(.gray, lineWidth: 1)
-                }
+                }.padding(5)
             
             HStack() {
                 Spacer()

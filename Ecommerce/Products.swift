@@ -10,13 +10,13 @@ import Foundation
 
 public enum Products{
     
-    struct Request : Codable{
-         
-        public func load() async throws -> [Product]{
-            let response: [Product] = try await Network.shared.fetch(for: .products)
-            return response
-        }
-    }
+//    struct Request : Codable{
+//         
+//        public func load() async throws -> [Product]{
+//            let response: [Product] = try await Network.shared.fetch(for: .products)
+//            return response
+//        }
+//    }
     
     
     struct Product: Codable {

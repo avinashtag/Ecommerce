@@ -28,11 +28,9 @@ struct HomePageView: View {
                     CategorieView()
                     Divider()
                     Spacer()
-                    YouMayLikeView()
                 }
-                .padding()
+                
             }
-//            Spacer()
 //            Text("Footer")
 //                .font(.title3)
 //                .bold()
@@ -40,9 +38,6 @@ struct HomePageView: View {
 //                .frame(maxWidth: .infinity, alignment: .center)
 //                .padding()
 //                .background(Color.white)
-            
-            
-            
             
         }
         

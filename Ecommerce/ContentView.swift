@@ -25,6 +25,7 @@ struct ContentView: View {
                 } label: {
                     Text("Get Started")
                         .bold()
+                        .foregroundStyle(.blue)
                 }
 
 

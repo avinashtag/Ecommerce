@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CategorieView: View {
+    
     var imagesSet =
     [
         "Electronics",
@@ -22,6 +23,21 @@ struct CategorieView: View {
         "Grosiris",
         "HomeApplincies",
         "KidsNeed"
+    ]
+    
+    var likeSet =
+    [
+        "FossilWatch",
+        "MenFootWare",
+        "MenWare",
+        "WomenWare"
+    ]
+    var likeSetNames =
+    [
+        "FossilWatch",
+        "Sneakers",
+        "Cargo",
+        "Saree"
     ]
     
     var body: some View {
@@ -47,6 +63,7 @@ struct CategorieView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 100, height: 100)
+                            .clipShape(Circle())
                         
                         Text(name)
                             .font(.subheadline)
@@ -58,6 +75,35 @@ struct CategorieView: View {
             }
             
         }.background(.pink)
+        Divider()
+        
+        VStack
+        {
+            Text("You May Like")
+                .font(.title2)
+                .bold()
+        }
+        
+            ScrollView(.horizontal)
+            {
+                HStack
+                {
+                    ForEach(Array(zip(likeSet, likeSetNames)), id: \.0) { image, name in
+                        VStack
+                        {
+                            Image(image)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/,height: 100)
+                                .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                            Text(name)
+                                .font(.subheadline)
+                                .bold()
+                        }
+                    }
+                }.padding()
+            }.background(.green)
+        Spacer()
     }
 }
 
