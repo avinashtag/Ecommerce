@@ -9,22 +9,24 @@ import SwiftUI
 
 struct BrandView: View {
     var brandNames =
-    ["Adidas","Balance","CAT","DocGab","Egal","Fendi","GAP","Hunk","Nike","Zara"]
+    ["Adidas","Balance","CAT","DocGab","Egal"]
     
     @State var isOn = false
     
     var body: some View {
         VStack
         {
-            Toggle(isOn: $isOn) {
+            Text("Brands")
                 ForEach(brandNames, id: \.self)
                 {text in
                     HStack{
-                        Text(text)
+                        Toggle(isOn: $isOn) {
+                            Text(text)
+                        }
+                            .foregroundStyle(Color.blue)
                     }
                 }
                 
-            }
             .toggleStyle(.button)
         }
         

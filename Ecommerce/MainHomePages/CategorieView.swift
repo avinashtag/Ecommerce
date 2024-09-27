@@ -42,6 +42,9 @@ struct CategorieView: View {
     
     var body: some View {
         VStack{
+            Text("For You")
+                .font(.title2)
+                .bold()
             Image("FashonSale")
                 .resizable()
                 .scaledToFit()

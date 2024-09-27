@@ -55,7 +55,7 @@ struct BrandCheckBoxView: View {
 struct ModelBrand:View {
     
     @State  var isSelected: Bool
-    //    var isSelected:Bool
+   
     var brandName:String
     
     var body: some View {

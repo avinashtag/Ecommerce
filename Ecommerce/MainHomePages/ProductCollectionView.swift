@@ -26,12 +26,17 @@ struct ProductCollectionView: View {
                     // Zip the images and names to create pairs of (image, name)
                     ForEach(products, id: \.self){ product in
                         VStack {
+                            Text(product.title)
+                                .font(.subheadline)
+                                .bold()
+                                .frame(width: 100)
+                                .lineLimit(2)
                             
                             AsyncImage(url: URL(string: product.image), scale: 1) { image in
                                 image
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 100, height: 100)
+                                    .frame(width: 100, height: 100,alignment: .center)
 
                             } placeholder: {
                                 ProgressView()
@@ -39,10 +44,11 @@ struct ProductCollectionView: View {
                             }
                             .frame(width: 100, height: 100)
 
-                            Text(product.title)
-                                .font(.subheadline)
-                                .bold()
-                                .frame(width: 100)
+//                            Text(product.title)
+//                                .font(.subheadline)
+//                                .bold()
+//                                .frame(width: 100)
+//                                .lineLimit(2)
                             
                         }
                         .padding()

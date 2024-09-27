@@ -27,9 +27,9 @@ extension Bundle{
 }
 
 
-extension String{
-    
-    func appendMyName()->String{
-        return "Avinash \(self)"
-    }
-}
+//extension String{
+//    
+//    func appendMyName()->String{
+//        return "Avinash \(self)"
+//    }
+//}

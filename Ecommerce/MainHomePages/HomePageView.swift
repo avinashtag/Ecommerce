@@ -11,8 +11,8 @@ struct HomePageView: View {
     
     
 
-    @State var forYouProductTitle: String = "For you"
-    @State var forCategory: String = "Category"
+//    @State var forYouProductTitle: String = "For you"
+    @State var productsForYou: String = "Products For You"
     
     @State private var products : [Products.Product] = []
     
@@ -25,20 +25,19 @@ struct HomePageView: View {
             
             ScrollView
             {
-                VStack(alignment: .leading, content: {
-                    SearchView(search: "".appendMyName())
+                VStack( content: {
+                    SearchView(search: "")
                     Divider()
                     HStack{
                         Spacer()
-                        Text("For You".appendMyName())
-                            .font(.title2)
-                            .bold()
+                        
                         Spacer()
                     }
-                    ProductBannerView()
+//                    ProductBannerView()
+//                    CategorieView()
                     Divider()
                   
-                    ProductCollectionView(title: $forYouProductTitle, products: $products)
+                    ProductCollectionView(title: $productsForYou, products: $products)
                    
                     Divider()
                     Spacer()
