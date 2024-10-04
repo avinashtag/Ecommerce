@@ -9,6 +9,10 @@ import SwiftUI
 
 struct BrandCheckBoxView: View {
     
+    @State private var products : [Products.Product] = []
+    @State private var product : Products.Category?
+    @State var productsForYou: String = "Products For You"
+    
     var brandNames =
     ["Adidas","Balance","CAT","DocGab","Egal","Fendi","GAP","Hunk","Nike","Zara"]
     
@@ -44,6 +48,25 @@ struct BrandCheckBoxView: View {
                 ModelBrand(isSelected: brandState[brand]!, brandName: brand)
                     .padding(5)
             }
+            
+//            Text(product)
+//            ProductBannerView(product: $product)
+//            ModelBrand(isSelected: true, brandName: product?)
+        }
+        .task {
+            
+            do{
+                products = try await Products.Request().load()
+                guard products.count > 0 else { return }
+//                (where: products.last)
+//                == "Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5"})
+                
+//                products.filter({$0.category == .menSClothing})
+//                products.filter({$0.title == ""})
+            }
+            catch{
+                print(error)
+            }
         }
     }
 }
@@ -56,6 +79,7 @@ struct ModelBrand:View {
     
     @State  var isSelected: Bool
    
+//    @State
     var brandName:String
     
     var body: some View {
@@ -71,3 +95,4 @@ struct ModelBrand:View {
         }
     }
 }
+
