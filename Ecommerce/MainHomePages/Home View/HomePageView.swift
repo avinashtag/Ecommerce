@@ -16,6 +16,9 @@ struct HomePageView: View {
     
     @State private var products : [Products.Product] = []
     @State private var product : Products.Product?
+    @State private var selectedCategory : [Products.Category] = []
+    
+    @State var isSelectedFilter: Bool = false
 
     var body: some View {
 //        SearchView(search: "")
@@ -27,24 +30,16 @@ struct HomePageView: View {
             ScrollView
             {
                 VStack( content: {
-                    SearchView(search: "")
-                    Divider()
-                    HStack{
-                        Spacer()
+                    SearchView(search: "", selectedCategory: $selectedCategory, isSelectedFilter: $isSelectedFilter, didFinishFilter: {
                         
-                        Spacer()
-                    }
+                        //Filter your Products
+//                       products =  products.filter({selectedCategory.contains($0.category)})
+                    })
+                    Divider()
                     
                     ProductBannerView(product: $product)
-//                    CategorieView()
                     Divider()
-                    
-//                    ProductBannerView(product: Binding(get: {
-//                        products.first
-//                    }, set: { _ in
-//                        
-//                    }))
-                  
+                
                     ProductCollectionView(title: $productsForYou, products: $products)
                    
                     Divider()
@@ -59,10 +54,9 @@ struct HomePageView: View {
             do{
                 products = try await Products.Request().load()
                 guard products.count > 0 else { return }
-                product = products.first(where: {$0.title == "Silicon Power 256GB SSD 3D NAND A55 SLC Cache Performance Boost SATA III 2.5"})
-                //Hint to search
-                products.filter({$0.category == .electronics})
-                products.filter({$0.title == ""})
+                if isSelectedFilter{
+                    products =  products.filter({selectedCategory.contains($0.category)})
+                }
             }
             catch{
                 print(error)
@@ -90,5 +84,21 @@ struct HomePageView: View {
  - logout
  - add tabbar
  
+ 
+ 1. Mutlithreading - api
+ 2. Picker view, Date picker
+ 3. maps
+ 4. Camera, Gallery
+ 5. notification - uilocalnotification
+ 6. Animation
+ 7. closures
+ 8. UIAlertView
+ 9. SwiftData
+ 10. Playing Audio and Video
+ 11. Sending mail and SMS from app
+ 12. 3rd Party Library
+ 
+ 
  */
+
 

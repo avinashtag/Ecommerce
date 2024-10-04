@@ -11,6 +11,9 @@ struct SearchView: View {
     
     @State var search:String
     @State private var isPresentFilters :Bool = false
+    @Binding var selectedCategory : [Products.Category]
+    @Binding var isSelectedFilter : Bool
+    var didFinishFilter: (()->Void)
 
     var body: some View {
         
@@ -34,13 +37,15 @@ struct SearchView: View {
         .cornerRadius(30)
         .foregroundColor(Color.blue)
         .sheet(isPresented: $isPresentFilters, content: {
-            BrandCheckBoxView()
+            BrandCheckBoxView( selectedCategory: $selectedCategory, isSelectedFilter: $isSelectedFilter, didFinishFilter:{
+                didFinishFilter()
+            })
         })
         
     }
     
 }
 
-#Preview {
-    SearchView(search: "")
-}
+//#Preview {
+//    SearchView(search: "")
+//}

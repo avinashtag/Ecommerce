@@ -16,11 +16,6 @@ struct MainTabView: View {
                     Image(systemName: "house")
                     Text("Home")
                 }
-            BrandCheckBoxView()
-                .tabItem {
-                    Image(systemName: "distribute.vertical.center.fill")
-                    Text("Categories")
-                }
             Text("Cart")
                 .tabItem {
                     Image(systemName: "cart.fill")
