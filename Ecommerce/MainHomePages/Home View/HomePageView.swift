@@ -10,8 +10,8 @@ import SwiftUI
 struct HomePageView: View {
     
     
-
-//    @State var forYouProductTitle: String = "For you"
+    
+    //    @State var forYouProductTitle: String = "For you"
     @State var productsForYou: String = "Products For You"
     
     @State private var products : [Products.Product] = []
@@ -19,35 +19,42 @@ struct HomePageView: View {
     @State private var selectedCategory : [Products.Category] = []
     
     @State var isSelectedFilter: Bool = false
-
+    @State var navigationPath : NavigationPath = NavigationPath()
     var body: some View {
-//        SearchView(search: "")
-        ZStack
-        {
-            LinearGradient(gradient: Gradient(colors: [.yellow]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: .bottomLeading)
-                .ignoresSafeArea(.all)
-            
-            ScrollView
+        //        SearchView(search: "")
+        NavigationStack(path: $navigationPath) {
+            ZStack
             {
-                VStack( content: {
-                    SearchView(search: "", selectedCategory: $selectedCategory, isSelectedFilter: $isSelectedFilter, didFinishFilter: {
-                        
-                        //Filter your Products
-//                       products =  products.filter({selectedCategory.contains($0.category)})
-                    })
-                    Divider()
-                    
-                    ProductBannerView(product: $product)
-                    Divider()
+                LinearGradient(gradient: Gradient(colors: [.yellow]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: .bottomLeading)
+                    .ignoresSafeArea(.all)
                 
-                    ProductCollectionView(title: $productsForYou, products: $products)
-                   
-                    Divider()
-                    Spacer()
-                })
+                ScrollView
+                {
+                    VStack( content: {
+                        SearchView(search: "", selectedCategory: $selectedCategory, isSelectedFilter: $isSelectedFilter, didFinishFilter: {
+                            
+                            //Filter your Products
+                            //                       products =  products.filter({selectedCategory.contains($0.category)})
+                        })
+                        Divider()
+                        
+                        ProductBannerView(product: $product)
+                        Divider()
+                        
+                        ProductCollectionView(title: $productsForYou, products: $products, didSelectProduct:{ product in
+                            navigationPath.append(product)
+                        })
+                        
+                        Divider()
+                        Spacer()
+                    })
+                    
+                }
                 
             }
-            
+            .navigationDestination(for: Products.Product.self, destination: { product in
+                ProductDetailView(product: Binding(get: {product}, set: {_ in }))
+            })
         }
         .task {
             
@@ -62,11 +69,6 @@ struct HomePageView: View {
                 print(error)
             }
         }
-        
-        
-        
-        
-        
         
     }
 }

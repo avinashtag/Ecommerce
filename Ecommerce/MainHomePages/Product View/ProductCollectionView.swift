@@ -13,6 +13,9 @@ struct ProductCollectionView: View {
     
     @Binding var title: String
     @Binding var products: [Products.Product]
+    
+    //Closure
+    var didSelectProduct:(Products.Product)->Void
 
     
     var body: some View {
@@ -52,6 +55,9 @@ struct ProductCollectionView: View {
                             
                         }
                         .padding()
+                        .onTapGesture {
+                            self.didSelectProduct(product)
+                        }
                     }
                 }
                 

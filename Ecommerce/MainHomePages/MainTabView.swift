@@ -26,11 +26,11 @@ struct MainTabView: View {
                     Image(systemName: "person.crop.circle")
                     Text("Profile")
                 }
-            SearchView(search: "")
-                .tabItem {
-                    Image(systemName: "magnifyingglass")
-                    Text("Search")
-                }
+//            SearchView(search: "")
+//                .tabItem {
+//                    Image(systemName: "magnifyingglass")
+//                    Text("Search")
+//                }
         }
     }
 }

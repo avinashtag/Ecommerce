@@ -11,10 +11,32 @@ import Foundation
 public enum Products{
     
     struct Request : Codable{
+        
+        //Load form API do not use
+        public func loadFromAPI() async throws -> [Product]{
+            
+            guard let url = URL(string: "https://fakestoreapi.com/products") else { throw ErrorResponse.requestFailed }
+            var request = URLRequest(url:  url)
+            request.httpMethod = "GET"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            let (data, response) = try await URLSession.shared.data(for: request)
+            let result = try JSONDecoder().decode([Product].self, from: data)
+            return result
+        }
+        
+        
+        //Load form bundle do not use
+        public func loadFromBundle() async throws -> [Product]{
+            
+            guard let url = Bundle.main.url(forResource: "Products", withExtension: "json") else { throw ErrorResponse.requestFailed }
+            let data = try Data(contentsOf: url)
+            let result = try JSONDecoder().decode([Product].self, from: data)
+            return result
+        }
          
+        
         public func load() async throws -> [Product]{
-            
-            
             return try Bundle.main.decoder("Products.json", of: [Product].self)
 //            let response: [Product] = try await Network.shared.fetch(for: .products)
 //            return response
