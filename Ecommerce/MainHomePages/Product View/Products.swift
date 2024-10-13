@@ -12,6 +12,8 @@ public enum Products{
     
     struct Request : Codable{
         
+        
+        
         //Load form API do not use
         public func loadFromAPI() async throws -> [Product]{
             
@@ -43,6 +45,9 @@ public enum Products{
         }
     }
     
+    //codable
+    // Decode response api
+    //encode to send request to API
     
     struct Product: Codable, Hashable {
         static func == (lhs: Products.Product, rhs: Products.Product) -> Bool {
@@ -60,6 +65,8 @@ public enum Products{
         let category: Category
         let image: String
         let rating: Rating
+        
+      
     }
 
     enum Category: String, Codable {

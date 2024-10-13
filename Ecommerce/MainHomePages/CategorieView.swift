@@ -64,6 +64,7 @@ struct CategorieView: View {
                         Image(image)
                             .resizable()
                             .scaledToFit()
+                            .scaledToFit()
                             .frame(width: 100, height: 100)
                             .clipShape(Circle())
                         

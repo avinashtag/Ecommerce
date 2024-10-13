@@ -11,7 +11,8 @@ struct LoginView: View {
     
     @State var email:String
     @State var password:String
-    
+    @State var user: User
+
     var body: some View {
         
         
@@ -62,7 +63,10 @@ struct LoginView: View {
                 })
                 .frame(height: 40,alignment: .bottomTrailing)
             }
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+            Button(action: {
+                //Call API for Login
+                user = User(username: "myusername", userId: 201)
+            }, label: {
                 Text("Sign in")
                     .font(.title3)
                     .bold()
@@ -74,14 +78,20 @@ struct LoginView: View {
             }, label: {
                 Text("Sign UP")
             })
-
-            
+//            .environment(\.user, user)
         })
     }
 }
 
 #Preview {
     LoginView(
-        email: "", password: ""
+        email: "", password: "", user: User(username: "", userId: 201)
     )
+}
+
+
+struct User: Codable{
+    
+    var username: String
+    var userId: Int64
 }

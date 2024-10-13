@@ -13,12 +13,13 @@ struct BrandCheckBoxView: View {
 
     @Binding var selectedCategory : [Products.Category]
     @Binding var isSelectedFilter : Bool
+    @Environment  (\.dismiss) var dismiss
 
     var didFinishFilter: (()->Void)
     
     var body: some View {
         
-        VStack(alignment:.trailing)
+        VStack(alignment:.leading)
         {
             Text("Brand's")
                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
@@ -32,6 +33,7 @@ struct BrandCheckBoxView: View {
             Button(action: {
                 isSelectedFilter.toggle()
                 didFinishFilter()
+                dismiss()
             }, label: {
                 Text("Done")
                     .buttonStyle(ConfirmButton())
@@ -61,12 +63,15 @@ struct ModelBrand:View {
             }
             
         }label: {
-            Text(category.rawValue)
-                .font(.title2)
-                .foregroundStyle(.green)
-            Image(systemName: isSelected ? "checkmark.square":"square")
-                .foregroundColor(isSelected ? .indigo : .red)
-                .font(.title2)
+            HStack{
+                Image(systemName: isSelected ? "checkmark.square":"square")
+                    .foregroundColor(isSelected ? .indigo : .red)
+                    .font(.title2)
+                Text(category.rawValue)
+                    .font(.title2)
+                    .foregroundStyle(.green)
+                Spacer()
+            }
         }
     }
 }

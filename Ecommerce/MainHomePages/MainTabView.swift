@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct MainTabView: View {
-    
+    @State var navigationPath : NavigationPath = NavigationPath()
+
     var body: some View {
         TabView {
-            HomePageView()
-                .tabItem {
-                    Image(systemName: "house")
-                    Text("Home")
-                }
+            NavigationStack(path: $navigationPath) {
+                HomePageView(navigationPath: $navigationPath)
+            }
+            .tabItem {
+                Image(systemName: "house")
+                Text("Home")
+            }
             Text("Cart")
                 .tabItem {
                     Image(systemName: "cart.fill")
@@ -26,11 +29,11 @@ struct MainTabView: View {
                     Image(systemName: "person.crop.circle")
                     Text("Profile")
                 }
-//            SearchView(search: "")
-//                .tabItem {
-//                    Image(systemName: "magnifyingglass")
-//                    Text("Search")
-//                }
+            //            SearchView(search: "")
+            //                .tabItem {
+            //                    Image(systemName: "magnifyingglass")
+            //                    Text("Search")
+            //                }
         }
     }
 }

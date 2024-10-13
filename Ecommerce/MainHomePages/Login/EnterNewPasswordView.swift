@@ -35,19 +35,19 @@ struct EnterNewPasswordView: View {
                 .cornerRadius(20)
         }.padding()
         
-        VStack
-        {
-            NavigationLink(destination: {HomePageView()}) {
-                Text("Done")
-                    .font(.title3)
-                    .bold()
-
-            }
-            .frame(width: 200,height: 50)
-            .foregroundColor(.white)
-            .background(Color.blue)
-            .cornerRadius(30)
-        }
+//        VStack
+//        {
+//            NavigationLink(destination: {HomePageView()}) {
+//                Text("Done")
+//                    .font(.title3)
+//                    .bold()
+//
+//            }
+//            .frame(width: 200,height: 50)
+//            .foregroundColor(.white)
+//            .background(Color.blue)
+//            .cornerRadius(30)
+//        }
         Spacer()
     }
 }

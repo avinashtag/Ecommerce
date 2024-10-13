@@ -18,44 +18,43 @@ struct HomePageView: View {
     @State private var product : Products.Product?
     @State private var selectedCategory : [Products.Category] = []
     
+    
     @State var isSelectedFilter: Bool = false
-    @State var navigationPath : NavigationPath = NavigationPath()
+    @Binding var navigationPath : NavigationPath
+//    @Environment (\.user) var user: User
     var body: some View {
         //        SearchView(search: "")
-        NavigationStack(path: $navigationPath) {
-            ZStack
-            {
-                LinearGradient(gradient: Gradient(colors: [.yellow]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: .bottomLeading)
-                    .ignoresSafeArea(.all)
-                
-                ScrollView
-                {
-                    VStack( content: {
-                        SearchView(search: "", selectedCategory: $selectedCategory, isSelectedFilter: $isSelectedFilter, didFinishFilter: {
-                            
-                            //Filter your Products
-                            //                       products =  products.filter({selectedCategory.contains($0.category)})
-                        })
-                        Divider()
+        ZStack
+        {
+            LinearGradient(gradient: Gradient(colors: [.yellow]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: .bottomLeading)
+                .ignoresSafeArea(.all)
+            
+            ScrollView {
+                VStack( content: {
+                    SearchView(search: "", selectedCategory: $selectedCategory, isSelectedFilter: $isSelectedFilter, didFinishFilter: {
                         
-                        ProductBannerView(product: $product)
-                        Divider()
-                        
-                        ProductCollectionView(title: $productsForYou, products: $products, didSelectProduct:{ product in
-                            navigationPath.append(product)
-                        })
-                        
-                        Divider()
-                        Spacer()
+                        //Filter your Products
+                        products =  products.filter({selectedCategory.contains($0.category)})
+                    })
+                    Divider()
+                    
+                    ProductBannerView(product: $product)
+                    Divider()
+                    
+                    ProductCollectionView(title: $productsForYou, products: $products, didSelectProduct:{ product in
+                        navigationPath.append(product)
                     })
                     
-                }
+                    Divider()
+                    Spacer()
+                })
                 
             }
-            .navigationDestination(for: Products.Product.self, destination: { product in
-                ProductDetailView(product: Binding(get: {product}, set: {_ in }))
-            })
+            
         }
+        .navigationDestination(for: Products.Product.self, destination: { product in
+            ProductDetailView(product: Binding(get: {product}, set: {_ in }))
+        })
         .task {
             
             do{
@@ -74,7 +73,9 @@ struct HomePageView: View {
 }
 
 #Preview {
-    HomePageView()
+    HomePageView( navigationPath: Binding(get: {
+        NavigationPath()
+    }, set: {_ in }))
 }
 
 /*
