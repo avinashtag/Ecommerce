@@ -53,7 +53,7 @@ struct HomePageView: View {
             
         }
         .navigationDestination(for: Products.Product.self, destination: { product in
-            ProductDetailView(product: Binding(get: {product}, set: {_ in }))
+            ProductDetailView(product: Binding(get: {product}, set: {_ in }), navigationPath: $navigationPath)
         })
         .task {
             

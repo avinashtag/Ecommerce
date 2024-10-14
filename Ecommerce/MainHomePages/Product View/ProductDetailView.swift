@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ProductDetailView: View {
     @Binding var product: Products.Product?
-    
+    @Binding var navigationPath : NavigationPath
+
     var body: some View {
         VStack
         {
@@ -44,7 +45,7 @@ struct ProductDetailView: View {
             Divider()
             
             Button(action: {
-                
+                navigationPath.append("Cart")
             },
                    label: {
                 Text("Buy Now")
@@ -56,7 +57,13 @@ struct ProductDetailView: View {
             .background(Color.blue)
             .cornerRadius(30)
             
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/,
+            Button(action: {
+                guard let product = product else { return }
+                //check for the existing product
+                if SharedEcommerce.shared.cartProducts.contains(where: {$0.id == product.id}) == false {
+                    SharedEcommerce.shared.cartProducts.append(product)
+                }
+            },
                    label: {
                 Text("Add To Cart")
                     .font(.title3)
@@ -69,6 +76,9 @@ struct ProductDetailView: View {
             .cornerRadius(30)
             
         }
+        .navigationDestination(for: String.self) { _ in
+            CartView()
+        }
     }
 }
 
@@ -78,5 +88,14 @@ struct ProductDetailView: View {
         return products?[1]
     }, set: { _ in
         
-    }))
+    }), navigationPath: Binding(get: {NavigationPath()}, set: {_ in }))
 }
+
+
+//singleton
+//next session
+//Environment
+// Database - SwiftData
+
+// set try
+// quantity in views cart and detail
