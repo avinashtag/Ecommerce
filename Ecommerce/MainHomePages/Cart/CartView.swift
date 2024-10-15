@@ -13,6 +13,8 @@ struct CartView: View {
     
     
     @State var products: [Products.Product] = SharedEcommerce.shared.cartProducts
+    
+    @State var quntity = 0
 
     var body: some View {
         List {
@@ -46,6 +48,11 @@ struct CartView: View {
                         })
                         
                     }
+                    Stepper("Quntity:0\(quntity)", value: $quntity, in: 1...9)
+                        .bold()
+                        .foregroundColor(.red)
+                        .font(.title3)
+
                 }
             }
         }
@@ -55,7 +62,6 @@ struct CartView: View {
         .refreshable {
             products = SharedEcommerce.shared.cartProducts
         }
-
     }
 }
 

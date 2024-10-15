@@ -15,6 +15,8 @@ class SharedEcommerce{
     
     static let shared: SharedEcommerce = SharedEcommerce()
     
+    
     var cartProducts: [Products.Product] = []
+//    var cartProducts: Set<[Products.Product]> = []
     
 }
