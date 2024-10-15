@@ -51,7 +51,7 @@ struct ProductDetailView: View {
                 Divider()
                 
                 //quntity button
-                Stepper("Quntity:\(quntity)", value: $quntity, in: 1...9)
+                Stepper("Quantity:\(quntity)", value: $quntity, in: 1...9)
                     .bold()
                     .foregroundColor(.red)
                     .font(.title3)
@@ -72,10 +72,11 @@ struct ProductDetailView: View {
                 Button(action: {
                     guard let product = product else { return }
                     //check for the existing product
-                    if SharedEcommerce.shared.cartProducts.contains(where: {$0.id == product.id}) == false {
-                        SharedEcommerce.shared.cartProducts.append(product)
-    //                SharedEcommerce.shared.cartProducts.insert(product)
-                    }
+                    SharedEcommerce.shared.cartProducts.insert(product)
+
+//                    if SharedEcommerce.shared.cartProducts.contains(where: {$0.id == product.id}) == false {
+//                        SharedEcommerce.shared.cartProducts.append(product)
+//                    }
                 },
                        label: {
                     Text("Add To Cart")

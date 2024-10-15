@@ -66,6 +66,8 @@ public enum Products{
         let image: String
         let rating: Rating
         
+        var quantity: Int?
+        
       
     }
 

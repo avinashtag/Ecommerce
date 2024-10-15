@@ -12,9 +12,8 @@ import SwiftUI
 struct CartView: View {
     
     
-    @State var products: [Products.Product] = SharedEcommerce.shared.cartProducts
+    @State var products = SharedEcommerce.shared.cartProducts
     
-    @State var quntity = 0
 
     var body: some View {
         List {
@@ -25,8 +24,10 @@ struct CartView: View {
                     })
                 }
                 else{
-                    ForEach(products, id: \.self){ product in
+                
+                    ForEach(products.compactMap({$0}), id: \.self){ product in
                         
+                
                         HStack(alignment: .top, content: {
                             AsyncImage(url: URL(string: product.image), scale: 1) { image in
                                 image
@@ -47,10 +48,14 @@ struct CartView: View {
                                 .font(.body.bold())
                             
                         })
-                        Stepper("Quntity:0\(quntity)", value: $quntity, in: 1...9)
-                            .bold()
-                            .foregroundColor(.red)
-                            .font(.title3)
+//                        Stepper("Quntity:0\(product.quantity ?? 0)", value: Binding(get: {
+//                            product.quantity ?? 0
+//                        }, set: { qnty in
+//                            product.quantity = qnty
+//                        }), in: 1...9)
+//                            .bold()
+//                            .foregroundColor(.red)
+//                            .font(.title3)
                         
                     }
                     
