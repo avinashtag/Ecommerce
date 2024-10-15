@@ -43,17 +43,27 @@ struct CartView: View {
                             Text(product.title)
                                 .font(.body)
                             Spacer()
-                            Text("$\(product.price , specifier: "%.2f")")
+                            Text("₹\(product.price , specifier: "%.2f")")
                                 .font(.body.bold())
+                            
                         })
+                        Stepper("Quntity:0\(quntity)", value: $quntity, in: 1...9)
+                            .bold()
+                            .foregroundColor(.red)
+                            .font(.title3)
                         
                     }
-                    Stepper("Quntity:0\(quntity)", value: $quntity, in: 1...9)
-                        .bold()
-                        .foregroundColor(.red)
-                        .font(.title3)
+                    
 
                 }
+//                if(products.count > 0)
+//                {
+//                    Stepper("Quntity:0\(quntity)", value: $quntity, in: 1...9)
+//                        .bold()
+//                        .foregroundColor(.red)
+//                        .font(.title3)
+//                }
+                
             }
         }
         .task {
