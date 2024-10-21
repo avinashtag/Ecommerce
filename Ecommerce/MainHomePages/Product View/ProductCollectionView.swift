@@ -6,16 +6,20 @@
 //
 
 import SwiftUI
+import SwiftData
 
 
 
 struct ProductCollectionView: View {
     
     @Binding var title: String
-    @Binding var products: [Products.Product]
-    
+    @Query private var products: [ProductItem]
+
     //Closure
-    var didSelectProduct:(Products.Product)->Void
+    var didSelectProduct:(ProductItem)->Void
+
+    @Environment(\.modelContext) private var modelContext
+    @Query private var productItems: [ProductItem]
 
     
     var body: some View {

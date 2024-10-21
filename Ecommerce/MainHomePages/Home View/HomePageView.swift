@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HomePageView: View {
     
@@ -14,7 +15,10 @@ struct HomePageView: View {
     //    @State var forYouProductTitle: String = "For you"
     @State var productsForYou: String = "Products For You"
     
-    @State private var products : [Products.Product] = []
+    @Query private var products: [ProductItem]
+    @Environment(\.modelContext) private var modelContext
+    
+    
     @State private var product : Products.Product?
     @State private var selectedCategory : [Products.Category] = []
     
@@ -34,14 +38,14 @@ struct HomePageView: View {
                     SearchView(search: "", selectedCategory: $selectedCategory, isSelectedFilter: $isSelectedFilter, didFinishFilter: {
                         
                         //Filter your Products
-                        products =  products.filter({selectedCategory.contains($0.category)})
+//                        products =  products.filter({selectedCategory.contains($0.category)})
                     })
                     Divider()
                     
                     ProductBannerView(product: $product)
                     Divider()
                     
-                    ProductCollectionView(title: $productsForYou, products: $products, didSelectProduct:{ product in
+                    ProductCollectionView(title: $productsForYou, didSelectProduct:{ product in
                         navigationPath.append(product)
                     })
                     
@@ -52,17 +56,23 @@ struct HomePageView: View {
             }
             
         }
-        .navigationDestination(for: Products.Product.self, destination: { product in
+        .navigationDestination(for: ProductItem.self, destination: { product in
             ProductDetailView(product: Binding(get: {product}, set: {_ in }), navigationPath: $navigationPath)
         })
         .task {
             
             do{
-                products = try await Products.Request().load()
-                guard products.count > 0 else { return }
-                if isSelectedFilter{
-                    products =  products.filter({selectedCategory.contains($0.category)})
+                let products = try await Products.Request().load()
+                
+                for product in products{
+                    
+                    let model = ProductItem(product: product)
+                    modelContext.insert(model)
                 }
+                guard products.count > 0 else { return }
+//                if isSelectedFilter{
+//                    products =  products.filter({selectedCategory.contains($0.category)})
+//                }
             }
             catch{
                 print(error)

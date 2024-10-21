@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftData
 
 
 public enum Products{
@@ -86,4 +87,39 @@ public enum Products{
 
 }
 
+@Model
+class ProductItem{
+    
+    let id: Int
+    let title: String
+    let price: Double
+    let explaination: String
+    let category: Products.Category
+    let image: String
+    let rating: Products.Rating
+    
+    var quantity: Int?
+    
+    init(id: Int, title: String, price: Double, explaination: String, category: Products.Category, image: String, rating: Products.Rating, quantity: Int? = nil) {
+        self.id = id
+        self.title = title
+        self.price = price
+        self.explaination = explaination
+        self.category = category
+        self.image = image
+        self.rating = rating
+        self.quantity = quantity
+    }
+        
+    convenience init( product: Products.Product) {
+        self.init(id: product.id, title: product.title, price: product.price, explaination: product.description, category: product.category, image: product.image, rating: product.rating, quantity: product.quantity)
+    }
+    
+//    func parse(_ product: Products.Product)->ProductItem {
+//        return ProductItem(id: product.id, title: product.title, price: product.price, explaination: product.description, category: product.category, image: product.image, rating: product.rating, quantity: product.quantity)
+//    }
 
+    
+    
+    
+}
