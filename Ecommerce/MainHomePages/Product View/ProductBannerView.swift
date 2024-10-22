@@ -10,7 +10,7 @@ import SwiftUI
 struct ProductBannerView: View {
     
     @State var forYouProductTitle: String = "For you"
-    @Binding var product: Products.Product?
+    @Binding var product: ProductItem?
     
     
     var body: some View {
@@ -51,5 +51,6 @@ struct ProductBannerView: View {
  
  */
 #Preview {
-    ProductBannerView( product: Binding(get: { Products.Product(id: 0, title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops", price: 20, description: "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday", category: .electronics, image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg", rating: Products.Rating(rate: 4, count: 5)) }, set: { _ in }))
+    ProductBannerView( product: Binding(get: { ProductItem(id: 0, title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops", price: 20, explaination: "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday", category: .electronics, image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg", rating: Products.Rating(rate: 4, count: 5)) }, set: { _ in }))
+    
 }

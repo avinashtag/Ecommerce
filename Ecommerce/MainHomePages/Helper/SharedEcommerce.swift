@@ -17,6 +17,6 @@ class SharedEcommerce{
     
     
 //    var cartProducts: [Products.Product] = []
-    var cartProducts: Set<Products.Product> = Set()
+    var cartProducts: Set<ProductItem> = Set()
     
 }

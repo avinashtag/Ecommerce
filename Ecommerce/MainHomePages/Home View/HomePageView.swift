@@ -19,7 +19,7 @@ struct HomePageView: View {
     @Environment(\.modelContext) private var modelContext
     
     
-    @State private var product : Products.Product?
+    @State private var product : ProductItem?
     @State private var selectedCategory : [Products.Category] = []
     
     
@@ -37,8 +37,8 @@ struct HomePageView: View {
                 VStack( content: {
                     SearchView(search: "", selectedCategory: $selectedCategory, isSelectedFilter: $isSelectedFilter, didFinishFilter: {
                         
-                        //Filter your Products
-//                        products =  products.filter({selectedCategory.contains($0.category)})
+//                        Filter your ProductItem
+                       var  products =  products.filter({selectedCategory.contains($0.category)})
                     })
                     Divider()
                     

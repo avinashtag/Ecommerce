@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProductDetailView: View {
-    @Binding var product: Products.Product?
+    @Binding var product: ProductItem?
     @Binding var navigationPath : NavigationPath
     
     @State var quntity = 0
@@ -44,7 +44,7 @@ struct ProductDetailView: View {
                     .font(.title3)
                     .underline()
                     .bold()
-                Text(product?.description ?? "")
+                Text(product?.explaination ?? "")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .padding()
@@ -98,14 +98,14 @@ struct ProductDetailView: View {
     }
 }
 
-#Preview {
-    ProductDetailView(product: Binding(get: {
-        let products = try? Bundle.main.decoder("Products.json", of: [Products.Product].self)
-        return products?[12]
-    }, set: { _ in
-        
-    }), navigationPath: Binding(get: {NavigationPath()}, set: {_ in }))
-}
+//#Preview {
+//    ProductDetailView(product: Binding(get: {
+//        let products = try? Bundle.main.decoder("Products.json", of: [ProductItem].self)
+//        return products?[12]
+//    }, set: { _ in
+//        
+//    }), navigationPath: Binding(get: {NavigationPath()}, set: {_ in }))
+//}
 
 
 //singleton
