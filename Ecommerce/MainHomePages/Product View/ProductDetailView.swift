@@ -94,6 +94,16 @@ struct ProductDetailView: View {
                 CartView()
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                NavigationLink {
+                    MapView()
+                } label: {
+                    Image(systemName: "map")
+                }
+
+            }
+        }
         
     }
 }
