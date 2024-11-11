@@ -88,7 +88,7 @@ public enum Products{
 }
 
 @Model
-class ProductItem{
+class ProductItem: Hashable{
     
     let id: Int
     let title: String

@@ -15,15 +15,15 @@ struct HomePageView: View {
     //    @State var forYouProductTitle: String = "For you"
     @State var productsForYou: String = "Products For You"
     
-    @Query private var products: [ProductItem]
+    @State private var products: [ProductItem] = []
     @Environment(\.modelContext) private var modelContext
     
     
     @State private var product : ProductItem?
-    @State private var selectedCategory : [Products.Category] = []
+    @State private var selectedCategory : [Products.Category] = [.electronics]
     
     
-    @State var isSelectedFilter: Bool = false
+    @State var isSelectedFilter: Bool = true
     @Binding var navigationPath : NavigationPath
 //    @Environment (\.user) var user: User
     var body: some View {
@@ -38,7 +38,15 @@ struct HomePageView: View {
                     SearchView(search: "", selectedCategory: $selectedCategory, isSelectedFilter: $isSelectedFilter, didFinishFilter: {
                         
 //                        Filter your ProductItem
-                       var  products =  products.filter({selectedCategory.contains($0.category)})
+                        do{
+                            let fetchDescriptor = FetchDescriptor<ProductItem>(predicate: #Predicate{
+                                selectedCategory.contains($0.category)
+                            })
+                            self.products = try modelContext.fetch(fetchDescriptor)
+                        }
+                        catch{
+                            
+                        }
                     })
                     Divider()
                     
@@ -62,7 +70,7 @@ struct HomePageView: View {
         .task {
             
             do{
-                let products = try await Products.Request().load()
+                var products = try await Products.Request().load()
                 
                 for product in products{
                     
@@ -70,9 +78,21 @@ struct HomePageView: View {
                     modelContext.insert(model)
                 }
                 guard products.count > 0 else { return }
-//                if isSelectedFilter{
-//                    products =  products.filter({selectedCategory.contains($0.category)})
-//                }
+                
+                
+
+                
+                if isSelectedFilter{
+                    let fetchDescriptor = FetchDescriptor<ProductItem>(predicate: #Predicate{
+                        $0.category == .electronics
+//                        selectedCategory.contains($0.category)
+                    })
+                    self.products = try modelContext.fetch(fetchDescriptor)
+                }
+                else{
+                    let fetchDescriptor = FetchDescriptor<ProductItem>()
+                    self.products = try modelContext.fetch(fetchDescriptor)
+                }
             }
             catch{
                 print(error)

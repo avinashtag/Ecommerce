@@ -27,6 +27,7 @@ struct ProductCollectionView: View {
             Text(title)
                 .font(.title2)
                 .bold()
+                .accessibilityLabel("title")
             ScrollView(.horizontal) {
                 HStack {
                     
