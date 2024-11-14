@@ -12,6 +12,8 @@ struct ProductDetailView: View {
     @Binding var navigationPath : NavigationPath
     
     @State var quntity = 0
+    @State var selectedImage : Image?
+    @State var openCamera : Bool = false
 
     var body: some View {
         ScrollView
@@ -93,9 +95,11 @@ struct ProductDetailView: View {
 
                 }
                 
-                NavigationLink(destination: CartView()) {
+                Button(action: {
+                    openCamera.toggle()
+                }, label: {
                     Label("Camera", systemImage: "Camera")
-                }
+                })
                 .buttonStyle(.bordered)
                 .tint(.blue)
                 
@@ -121,6 +125,10 @@ struct ProductDetailView: View {
 
             }
         }
+        .fullScreenCover(isPresented: $openCamera, content: {
+            CameraView(image: $selectedImage )
+                .ignoresSafeArea()
+        })
         .task {
             NotificationCenter.default.addObserver(forName: NSNotification.Name("SuccessLoadAllProducts"), object: nil, queue: nil) { notification in
                 
