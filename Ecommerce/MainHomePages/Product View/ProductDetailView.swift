@@ -56,38 +56,55 @@ struct ProductDetailView: View {
                     .foregroundColor(.red)
                     .font(.title3)
                 
-                Button(action: {
-                    navigationPath.append("Cart")
-                },
-                       label: {
-                    Text("Buy Now")
-                        .font(.title3)
-                        .bold()
-                })
-                .frame(width: 250,height: 50)
-                .foregroundColor(.white)
-                .background(Color.blue)
-                .cornerRadius(30)
-                
-                Button(action: {
-                    guard let product = product else { return }
-                    //check for the existing product
-                    SharedEcommerce.shared.cartProducts.insert(product)
+                HStack{
+                    Button(action: {
+                        navigationPath.append("Cart")
+                    },
+                           label: {
+                        Text("Buy Now")
+                            .font(.title3)
+                            .bold()
+                            .padding()
+                    })
+                    .frame(height: 50)
+                    .foregroundColor(.white)
+                    .background(Color.blue)
+                    .cornerRadius(10)
+                    
+                    Button(action: {
+                        guard let product = product else { return }
+                        //check for the existing product
+                        SharedEcommerce.shared.cartProducts.insert(product)
+                        //                    if SharedEcommerce.shared.cartProducts.contains(where: {$0.id == product.id}) == false {
+                        //                        SharedEcommerce.shared.cartProducts.append(product)
+                        //                    }
+                    },
+                           label: {
+                        Text("Add To Cart")
+                            .font(.title3)
+                            .bold()
+                            .padding()
+                    }
+                        )
+                    .frame(height: 50)
+                    .foregroundColor(.white)
+                    .background(Color.green)
+                    .cornerRadius(10)
 
-//                    if SharedEcommerce.shared.cartProducts.contains(where: {$0.id == product.id}) == false {
-//                        SharedEcommerce.shared.cartProducts.append(product)
-//                    }
-                },
-                       label: {
-                    Text("Add To Cart")
-                        .font(.title3)
-                        .bold()
                 }
-                    )
-                .frame(width: 250,height: 50)
-                .foregroundColor(.white)
-                .background(Color.green)
-                .cornerRadius(30)
+                
+                NavigationLink(destination: CartView()) {
+                    Label("Camera", systemImage: "Camera")
+                }
+                .buttonStyle(.bordered)
+                .tint(.blue)
+                
+                NavigationLink(destination: GalleryView()) {
+                    Label("Picture", systemImage: "Camera")
+                }
+                .buttonStyle(.bordered)
+                .tint(.blue)
+
                 
             }
             .navigationDestination(for: String.self) { _ in
@@ -104,18 +121,24 @@ struct ProductDetailView: View {
 
             }
         }
+        .task {
+            NotificationCenter.default.addObserver(forName: NSNotification.Name("SuccessLoadAllProducts"), object: nil, queue: nil) { notification in
+                
+                print("Product Detail Success Notification")
+            }
+        }
         
     }
 }
 
-//#Preview {
-//    ProductDetailView(product: Binding(get: {
-//        let products = try? Bundle.main.decoder("Products.json", of: [ProductItem].self)
-//        return products?[12]
-//    }, set: { _ in
-//        
-//    }), navigationPath: Binding(get: {NavigationPath()}, set: {_ in }))
-//}
+#Preview {
+    ProductDetailView(product: Binding(get: {
+        let products = try? Bundle.main.decoder("Products.json", of: [ProductItem].self)
+        return products?[12]
+    }, set: { _ in
+        
+    }), navigationPath: Binding(get: {NavigationPath()}, set: {_ in }))
+}
 
 
 //singleton

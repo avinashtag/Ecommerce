@@ -69,8 +69,11 @@ struct HomePageView: View {
         })
         .task {
             
+            NotificationCenter.default.addObserver(forName: NSNotification.Name("SuccessLoadAllProducts"), object: nil, queue: nil) { notification in
+                print("Home Page Success Notification")
+            }
             do{
-                var products = try await Products.Request().load()
+                var products = try await Products.Request().loadFromAPI()
                 
 //                for product in products{
 //                    

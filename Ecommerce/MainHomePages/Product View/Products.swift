@@ -25,6 +25,10 @@ public enum Products{
             
             let (data, response) = try await URLSession.shared.data(for: request)
             let result = try JSONDecoder().decode([Product].self, from: data)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now()+10) {
+                NotificationCenter.default.post(name: NSNotification.Name("SuccessLoadAllProducts"), object: nil)
+            }
             return result
         }
         
@@ -68,7 +72,7 @@ public enum Products{
         let rating: Rating
         
         var quantity: Int?
-        
+             
       
     }
 
@@ -88,7 +92,7 @@ public enum Products{
 }
 
 @Model
-class ProductItem: Hashable{
+class ProductItem: Hashable, Codable{
     
     let id: Int
     let title: String
@@ -100,6 +104,44 @@ class ProductItem: Hashable{
     
     var quantity: Int?
     
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case price
+        case explaination = "description"
+        case category
+        case image
+        case rating
+        case quantity
+    }
+    
+    func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: ProductItem.CodingKeys.self)
+        try container.encode(self.id, forKey: ProductItem.CodingKeys.id)
+        try container.encode(self.title, forKey: ProductItem.CodingKeys.title)
+        try container.encode(self.price, forKey: ProductItem.CodingKeys.price)
+        try container.encode(self.explaination, forKey: ProductItem.CodingKeys.explaination)
+        try container.encode(self.category, forKey: ProductItem.CodingKeys.category)
+        try container.encode(self.image, forKey: ProductItem.CodingKeys.image)
+        try container.encode(self.rating, forKey: ProductItem.CodingKeys.rating)
+        try container.encodeIfPresent(self.quantity, forKey: ProductItem.CodingKeys.quantity)
+    }
+
+    
+    required init(from decoder: any Decoder) throws {
+        let container: KeyedDecodingContainer<ProductItem.CodingKeys> = try decoder.container(keyedBy: ProductItem.CodingKeys.self)
+        self.id = try container.decode(Int.self, forKey: ProductItem.CodingKeys.id)
+        self.title = try container.decode(String.self, forKey: ProductItem.CodingKeys.title)
+        self.price = try container.decode(Double.self, forKey: ProductItem.CodingKeys.price)
+        self.explaination = try container.decode(String.self, forKey: ProductItem.CodingKeys.explaination)
+        self.category = try container.decode(Products.Category.self, forKey: ProductItem.CodingKeys.category)
+        self.image = try container.decode(String.self, forKey: ProductItem.CodingKeys.image)
+        self.rating = try container.decode(Products.Rating.self, forKey: ProductItem.CodingKeys.rating)
+        self.quantity = try container.decodeIfPresent(Int.self, forKey: ProductItem.CodingKeys.quantity)
+    }    
+
+
     init(id: Int, title: String, price: Double, explaination: String, category: Products.Category, image: String, rating: Products.Rating, quantity: Int? = nil) {
         self.id = id
         self.title = title

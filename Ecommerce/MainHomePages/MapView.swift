@@ -62,8 +62,18 @@ struct MapView: View {
                 ForEach(searchResult, id: \.self){ item in
                     Marker(item: item)
                 }
+                
+                if let route{
+                    MapPolyline(route)
+                        .stroke(.blue, lineWidth: 5)
+                }
             }
         }
+        .mapControls({
+            MapUserLocationButton()
+            MapScaleView()
+            MapCompass()
+        })
         .mapStyle(.standard(elevation: .realistic))
         .safeAreaInset(edge: .bottom) {
             HStack{
@@ -84,9 +94,34 @@ struct MapView: View {
             }
             .background(.thinMaterial)
         }
+        .onChange(of: selected) {
+            getDirections()
+        }
+        .task {
+            NotificationCenter.default.addObserver(forName: NSNotification.Name("SuccessLoadAllProducts"), object: nil, queue: nil) { notification in
+                print("Map Success Notification")
+            }
+        }
 
         
     }
+    
+    func getDirections(){
+        route = nil
+        guard let selected else { return }
+        
+        let request = MKDirections.Request()
+        // userloactionSource = MKMapItem(placemark: MKPlacemark(coordinate: MKUserLocation().coordinate))
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: .parking))
+        request.destination = selected
+        
+        Task{
+            let directions = MKDirections(request: request)
+            let response = try? await directions.calculate()
+            route = response?.routes.first
+        }
+    }
+
 }
 
 #Preview {
