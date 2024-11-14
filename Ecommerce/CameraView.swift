@@ -14,12 +14,16 @@ struct CameraView: UIViewControllerRepresentable {
     @Binding var image : Image?
     
     
+    func makeCoordinator() -> CameraCoordinator {
+        return CameraCoordinator(camera: self)
+    }
+    
     func makeUIViewController(context: Context) -> UIImagePickerController {
 
         let coordinator = UIImagePickerController()
         
         coordinator.sourceType = .camera
-//        coordinator.delegate = context.coordinator
+        coordinator.delegate = context.coordinator
         return coordinator
     }
     
