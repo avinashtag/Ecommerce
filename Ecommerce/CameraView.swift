@@ -12,6 +12,7 @@ struct CameraView: UIViewControllerRepresentable {
     
 
     @Binding var image : Image?
+    @Environment(\.presentationMode) var ispresented
     
     
     func makeCoordinator() -> CameraCoordinator {
@@ -45,6 +46,11 @@ class CameraCoordinator: NSObject, UINavigationControllerDelegate, UIImagePicker
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage else { return }
         camera.image = Image(uiImage: image)
+        camera.ispresented.wrappedValue.dismiss()
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        camera.ispresented.wrappedValue.dismiss()
     }
     
 }
